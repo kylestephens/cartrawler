@@ -1,0 +1,37 @@
+<!-- Meta + Filter Area -->
+<div class="booking-details">
+    
+    <h1>Booking details</h1>
+
+    <div class="booking-meta">
+        <div class="booking-meta__row">
+            <span class="booking-meta__field">Pickup Date:</span>
+            <span class="booking-meta__value">{{bookingMeta.pickUpDateTime | date:'medium'}}</span>
+        </div>
+
+        <div class="booking-meta__row">
+            <span class="booking-meta__field">Pickup Location:</span>
+            <span class="booking-meta__value">{{bookingMeta.pickupLocation}}</span>
+        </div>
+
+        <hr />
+        
+        <div class="booking-meta__row">
+            <span class="booking-meta__field">Return Date:</span>
+            <span class="booking-meta__value">{{bookingMeta.returnDateTime | date:'medium'}}</span>
+        </div>
+
+        <div class="booking-meta__row">
+            <span class="booking-meta__field">Return Location:</span>
+            <span class="booking-meta__value">{{bookingMeta.returnLocation}}</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- Search Results -->
+<div class="row marketing">
+    <div ng-repeat="vehicle in allAvailableVehicles | orderBy:'rateTotalAmount'">
+        <vehicle-card data="vehicle" class="[ col-xs-12 col-sm-4 col-lg-3 ]"></vehicle-card>
+    </div>
+</div>

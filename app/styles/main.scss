@@ -1,0 +1,21 @@
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,100,900);
+
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
+body {
+  font-family: 'Lato', sans-serif;
+  padding: 0;
+}
+
+// Skeleton Structure Files
+@import 'structure/footer',
+        'structure/header',
+        'structure/responsive';
+
+// Modules
+@import '../modules/vehicleCard/vehicleCard';

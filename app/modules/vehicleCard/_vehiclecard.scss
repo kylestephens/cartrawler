@@ -1,0 +1,107 @@
+/**
+ * Vehicle Card Styling
+ *
+ * Styling follows BEM convention
+ */
+
+$color-price-label: #FFDC40;
+$price-label-width: 70px;
+
+.vehicle-card {
+	// Structure
+	margin: 12px 0;
+	height: 250px;
+
+	// Style
+	@include border-radius(4px);
+	@include box-shadow(0 1px 8px 0 rgba(0,0,0,0.2));
+
+	/**
+	 * Vehicle Name
+	 */
+	&__name {
+		// Structure
+		display: block;
+		width: 60%;
+		padding: 12px;
+
+		// Style
+		font-weight: 900;
+	}
+
+	/**
+	 * Vehicle Cost
+	 */
+	&__rate-total-amount {
+		// Structure
+		right: -3px;
+		top: 25px;
+		margin-left: 50px;
+		position: absolute;
+		display: inline-block;
+		width: $price-label-width;
+		height: 40px;
+		line-height: 40px;
+		margin-left: 15px;
+
+		// Style
+		font-weight: 600;
+		font-size: 16px;
+		background: $color-price-label;
+		@include text-shadow(rgba(255,255,255, .2) 1px 1px, rgba(255,255,255, .2) 1px 1px);
+		@include border-radius(0 3px 2px 0px);
+
+		&:after{
+		  content: "";
+		  position: absolute;
+		  right: 100%;
+		  bottom: 0;
+		  width: 0;
+		  height: 0;
+		  display: inline-block;
+		  line-height: 0;
+		  border-width: 20px;
+		  border-style: solid;
+		  border-color: $color-price-label $color-price-label $color-price-label transparent;
+		}
+
+		&:before{
+		  content: '';
+		  position: absolute;
+		  bottom: 6px;
+		  width: $price-label-width;
+		  left: -35px;
+		  height: 4px;
+		  @include box-shadow(0 5px 14px rgba(0, 0, 0, 0.4));
+		  z-index: -1;
+		  @include transform(skew(-5deg) rotate(-5deg));
+		}
+	}
+
+	/**
+	 * Vehicle Image
+	 */
+	&__image {
+		width: 100%;
+		text-align: center;
+	}
+
+	/**
+	 * Vehicle Meta Info
+	 */
+	&__meta {
+		color: #333;
+		font-weight: 300;
+		display: inline-block;
+		width: 50%;
+
+		&:nth-of-type(even) {
+			float: right;
+			text-align: right;
+		}
+	}
+
+	&__details {
+		padding: 0 12px;
+	}
+}

@@ -1,0 +1,49 @@
+<div class="vehicle-card">
+
+	<span class="vehicle-card__rate-total-amount">
+		${{vehicle.rateTotalAmount}}
+	</span>
+
+	<span class="vehicle-card__name">
+		{{vehicle.makeAndModel}}
+	</span>
+
+	<div class="vehicle-card__image">
+		<img ng-src="{{vehicle.pictureUrl}}" alt="{{vehicle.makeAndModel}}" />
+	</div>
+
+	<div class="vehicle-card__details">
+		<span class="vehicle-card__meta vehicle-card__transmission">
+			{{vehicle.transmissionType}}
+		</span>
+
+		<span class="vehicle-card__meta vehicle-card__fuel-type">
+			{{vehicle.fuelType}}
+		</span>
+
+		<span class="vehicle-card__meta vehicle-card__drive-type">
+			Drive: {{vehicle.driveType}}
+		</span>
+
+		<span class="vehicle-card__meta vehicle-card__passenger-quantity">
+			Passengers: {{vehicle.passengerQuantity}}
+		</span>
+
+		<span class="vehicle-card__meta vehicle-card__baggage-quantity">
+			Bags: {{vehicle.baggageQuantity}}
+		</span>
+
+		<span class="vehicle-card__meta vehicle-card__door-count">
+			Doors: {{vehicle.doorCount}}
+		</span>
+
+		<span class="vehicle-card__vendor">
+			{{vehicle.vendor}}
+		</span>
+
+		<span class="vehicle-card__status">
+			{{vehicle.status}}
+		</span>
+	</div>
+
+</div>

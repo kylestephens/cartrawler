@@ -6,9 +6,14 @@
 // endbower
 
 body {
-  font-family: 'Lato', sans-serif;
-  padding: 0;
+	font-family: 'Lato', sans-serif;
+	padding: 0;
 }
+
+// View / Screens Styilng
+@import 'sass/ui-colors',
+		'sass/ui-variables',
+		'sass/utils';
 
 // Skeleton Structure Files
 @import 'structure/footer',
@@ -20,3 +25,8 @@ body {
 
 // Modules
 @import '../modules/vehicleCard/vehicleCard';
+
+#main {
+	background: $color-body-background;
+	padding-bottom: $ui-footer-height;
+}

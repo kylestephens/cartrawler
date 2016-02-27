@@ -1,0 +1,15 @@
+/**
+ * Styling utility classes
+ */
+.util-vertical-align {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.util-hide-scrollbar {
+	&::-webkit-scrollbar { 
+	  display: none; 
+	}
+}

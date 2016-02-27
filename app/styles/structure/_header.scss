@@ -1,5 +1,6 @@
 /* Custom page header */
 .header {
+	height: $ui-header-height;
 	margin-bottom: 10px;
 
 	.navbar {
@@ -16,8 +17,8 @@
 	padding: 4px 20px 20px 20px;
 
 	// Style
-	background: #cecece;
-	@include border-radius(4px);
+	background: $color-masthead-background;
+	@include border-radius($ui-border-radius-normal);
 	@include box-shadow(0 1px 8px 0 rgba(0,0,0,0.2));
 
 	h1 {

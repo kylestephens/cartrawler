@@ -1,12 +1,8 @@
-<div ng-click="onGoBack()">
-	Go back
-</div>
+<a href="#/">
+	&#8592; Go back
+</a>
 
 <div class="vehicle-detail" ng-click="onClickCard(vehicle)">
-
-	<span class="vehicle-detail__rate-total-amount">
-		${{vehicle.rateTotalAmount}}
-	</span>
 
 	<span class="vehicle-detail__name">
 		{{vehicle.makeAndModel}}
@@ -15,6 +11,10 @@
 	<div class="vehicle-detail__image">
 		<img ng-src="{{vehicle.pictureUrl}}" alt="{{vehicle.makeAndModel}}" />
 	</div>
+
+	<span class="vehicle-detail__rate-total-amount">
+		${{vehicle.rateTotalAmount}}
+	</span>
 
 	<div class="vehicle-detail__details">
 		<span class="vehicle-detail__vendor">

@@ -3,27 +3,37 @@
     
     <h1>Booking details</h1>
 
-    <div class="booking-meta">
-        <div class="booking-meta__row">
+    <div class="booking-meta [ container ]">
+        <div class="booking-meta__row [ row ]">
             <span class="booking-meta__field">Pickup Date:</span>
             <span class="booking-meta__value">{{bookingMeta.pickUpDateTime | date:'medium'}}</span>
         </div>
 
-        <div class="booking-meta__row">
+        <div class="booking-meta__row [ row ]">
             <span class="booking-meta__field">Pickup Location:</span>
             <span class="booking-meta__value">{{bookingMeta.pickupLocation}}</span>
         </div>
 
-        <hr />
+        <div class="[ row ]">
+            <hr />
+        </div>
         
-        <div class="booking-meta__row">
+        <div class="booking-meta__row [ row ]">
             <span class="booking-meta__field">Return Date:</span>
             <span class="booking-meta__value">{{bookingMeta.returnDateTime | date:'medium'}}</span>
         </div>
 
-        <div class="booking-meta__row">
+        <div class="booking-meta__row [ row ]">
             <span class="booking-meta__field">Return Location:</span>
             <span class="booking-meta__value">{{bookingMeta.returnLocation}}</span>
+        </div>
+
+        <!-- Filter Options -->
+        <div class="booking-meta__filters [ row ]">
+            <div class="[ col-xs-12 col-sm-3 col-sm-offset-9 ]">
+                Sort by:
+                <select class="form-control" ng-model="filterOptionSelected" ng-init="filterOptionSelected = filterOptionSelected || filterOptions[0]" ng-options="option as option.label for option in filterOptions track by option.id" ng-change="changeFilter(filterOptionSelected)"></select>
+            </div>
         </div>
     </div>
 
@@ -31,7 +41,7 @@
 
 <!-- Search Results -->
 <div class="row marketing">
-    <div ng-repeat="vehicle in allAvailableVehicles | orderBy:'rateTotalAmount'">
+    <div ng-repeat="vehicle in allAvailableVehicles | orderBy: orderBySelection">
         <vehicle-card data="vehicle" class="[ col-xs-12 col-sm-4 col-lg-3 ]"></vehicle-card>
     </div>
 </div>

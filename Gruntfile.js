@@ -6,8 +6,7 @@ module.exports = function(grunt) {
 
     require('jit-grunt')(grunt, {
         useminPrepare: 'grunt-usemin',
-        ngtemplates: 'grunt-angular-templates',
-        cdnify: 'grunt-google-cdn'
+        ngtemplates: 'grunt-angular-templates'
     });
 
     // Configurable paths for the application
@@ -34,10 +33,6 @@ module.exports = function(grunt) {
                     livereload: '<%= connect.options.livereload %>'
                 }
             },
-            jsTest: {
-                files: ['test/spec/{,*/}*.js'],
-                //tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
-            },
             compass: {
                 files: ['<%= config.app %>/styles/{,*/}*.{scss,sass}', '<%= config.app %>/modules/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'postcss:server']
@@ -60,7 +55,6 @@ module.exports = function(grunt) {
         connect: {
             options: {
                 port: 9000,
-                // Change this to '0.0.0.0' to access the server from outside.
                 hostname: 'localhost',
                 livereload: 35729
             },
@@ -77,22 +71,6 @@ module.exports = function(grunt) {
                             connect().use(
                                 '/app/styles',
                                 connect.static('./app/styles')
-                            ),
-                            connect.static(appConfig.app)
-                        ];
-                    }
-                }
-            },
-            test: {
-                options: {
-                    port: 9001,
-                    middleware: function(connect) {
-                        return [
-                            connect.static('.tmp'),
-                            connect.static('test'),
-                            connect().use(
-                                '/bower_components',
-                                connect.static('./bower_components')
                             ),
                             connect.static(appConfig.app)
                         ];
@@ -117,12 +95,6 @@ module.exports = function(grunt) {
                     'Gruntfile.js',
                     '<%= config.app %>/scripts/{,*/}*.js'
                 ]
-            },
-            test: {
-                options: {
-                    jshintrc: 'test/.jshintrc'
-                },
-                src: ['test/spec/{,*/}*.js']
             }
         },
 
@@ -136,9 +108,6 @@ module.exports = function(grunt) {
                     'Gruntfile.js',
                     '<%= config.app %>/scripts/{,*/}*.js'
                 ]
-            },
-            test: {
-                src: ['test/spec/{,*/}*.js']
             }
         },
 
@@ -190,22 +159,6 @@ module.exports = function(grunt) {
                 src: ['<%= config.app %>/index.html'],
                 ignorePath: /\.\.\//
             },
-            test: {
-                devDependencies: true,
-                src: '<%= karma.unit.configFile %>',
-                ignorePath: /\.\.\//,
-                fileTypes: {
-                    js: {
-                        block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-                        detect: {
-                            js: /'(.*\.js)'/gi
-                        },
-                        replace: {
-                            js: '\'{{filePath}}\','
-                        }
-                    }
-                }
-            },
             sass: {
                 src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
                 ignorePath: /(\.\.\/){1,2}bower_components\//
@@ -241,7 +194,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // Renames files for browser caching purposes
         filerev: {
             dist: {
                 src: [
@@ -269,7 +221,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // Performs rewrites based on filerev and the useminPrepare configuration
         usemin: {
             html: ['<%= config.dist %>/{,*/}*.html'],
             css: ['<%= config.dist %>/styles/{,*/}*.css'],
@@ -285,28 +236,6 @@ module.exports = function(grunt) {
                         [/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']
                     ]
                 }
-            }
-        },
-
-        imagemin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/images',
-                    src: '{,*/}*.{png,jpg,jpeg,gif}',
-                    dest: '<%= config.dist %>/images'
-                }]
-            }
-        },
-
-        svgmin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.app %>/images',
-                    src: '{,*/}*.svg',
-                    dest: '<%= config.dist %>/images'
-                }]
             }
         },
 
@@ -340,7 +269,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // ng-annotate tries to make the code safe for minification automatically
         ngAnnotate: {
             dist: {
                 files: [{
@@ -352,14 +280,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // Replace Google CDN references
-        cdnify: {
-            dist: {
-                html: ['<%= config.dist %>/*.html']
-            }
-        },
-
-        // Copies remaining files to places other tasks can use
         copy: {
             dist: {
                 files: [{
@@ -393,27 +313,13 @@ module.exports = function(grunt) {
             }
         },
 
-        // Run some tasks in parallel to speed up the build process
         concurrent: {
             server: [
                 'compass:server'
             ],
-            test: [
-                'compass'
-            ],
             dist: [
-                'compass:dist',
-                'imagemin',
-                'svgmin'
+                'compass:dist'
             ]
-        },
-
-        // Test settings
-        karma: {
-            unit: {
-                configFile: 'test/karma.conf.js',
-                singleRun: true
-            }
         }
     });
 
@@ -433,15 +339,6 @@ module.exports = function(grunt) {
         ]);
     });
 
-    grunt.registerTask('test', [
-        'clean:server',
-        'wiredep',
-        'concurrent:test',
-        'postcss',
-        'connect:test',
-        'karma'
-    ]);
-
     grunt.registerTask('build', [
         'clean:dist',
         'wiredep',
@@ -452,7 +349,6 @@ module.exports = function(grunt) {
         'concat',
         'ngAnnotate',
         'copy:dist',
-        'cdnify',
         'cssmin',
         'uglify',
         'filerev',
@@ -463,7 +359,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         //'newer:jshint',
         'newer:jscs',
-        'test',
         'build'
     ]);
 };

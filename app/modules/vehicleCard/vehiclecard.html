@@ -1,4 +1,4 @@
-<div class="vehicle-card">
+<div class="vehicle-card" ng-click="onClickCard(vehicle)">
 
 	<span class="vehicle-card__rate-total-amount">
 		${{vehicle.rateTotalAmount}}
@@ -13,6 +13,14 @@
 	</div>
 
 	<div class="vehicle-card__details">
+		<span class="vehicle-card__vendor">
+			{{vehicle.vendor}}
+		</span>
+
+		<span class="vehicle-card__status">
+			{{vehicle.status}}
+		</span>
+
 		<span class="vehicle-card__meta vehicle-card__transmission">
 			{{vehicle.transmissionType}}
 		</span>
@@ -35,14 +43,6 @@
 
 		<span class="vehicle-card__meta vehicle-card__door-count">
 			Doors: {{vehicle.doorCount}}
-		</span>
-
-		<span class="vehicle-card__vendor">
-			{{vehicle.vendor}}
-		</span>
-
-		<span class="vehicle-card__status">
-			{{vehicle.status}}
 		</span>
 	</div>
 

@@ -6,7 +6,7 @@
 $color-price-label: #FFDC40;
 $price-label-width: 70px;
 
-.vehicle-card {
+.vehicle-detail {
 	// Structure
 	margin: 12px 0;
 	height: 250px;
@@ -123,10 +123,4 @@ $price-label-width: 70px;
 		text-align: right;
 	}
 
-}
-
-@media screen and (min-width: 768px) and (max-width: 992px) {
-	.vehicle-card {
-		height: 280px;
-	}
 }

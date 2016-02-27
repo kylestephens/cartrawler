@@ -26,7 +26,21 @@
 }
 
 .booking-meta {
+
+	&.container {
+		width: 100%;
+	}
+
+	[class*="col-"] {
+		padding: 0;
+	}
+
 	&__field {
 		font-weight: 900;
 	}
+
+	&__filters {
+		padding-top: 12px;
+	}
+
 }

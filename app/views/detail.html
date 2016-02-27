@@ -1,0 +1,53 @@
+<div ng-click="onGoBack()">
+	Go back
+</div>
+
+<div class="vehicle-detail" ng-click="onClickCard(vehicle)">
+
+	<span class="vehicle-detail__rate-total-amount">
+		${{vehicle.rateTotalAmount}}
+	</span>
+
+	<span class="vehicle-detail__name">
+		{{vehicle.makeAndModel}}
+	</span>
+
+	<div class="vehicle-detail__image">
+		<img ng-src="{{vehicle.pictureUrl}}" alt="{{vehicle.makeAndModel}}" />
+	</div>
+
+	<div class="vehicle-detail__details">
+		<span class="vehicle-detail__vendor">
+			{{vehicle.vendor}}
+		</span>
+
+		<span class="vehicle-detail__status">
+			{{vehicle.status}}
+		</span>
+
+		<span class="vehicle-detail__meta vehicle-detail__transmission">
+			{{vehicle.transmissionType}}
+		</span>
+
+		<span class="vehicle-detail__meta vehicle-detail__fuel-type">
+			{{vehicle.fuelType}}
+		</span>
+
+		<span class="vehicle-detail__meta vehicle-detail__drive-type">
+			Drive: {{vehicle.driveType}}
+		</span>
+
+		<span class="vehicle-detail__meta vehicle-detail__passenger-quantity">
+			Passengers: {{vehicle.passengerQuantity}}
+		</span>
+
+		<span class="vehicle-detail__meta vehicle-detail__baggage-quantity">
+			Bags: {{vehicle.baggageQuantity}}
+		</span>
+
+		<span class="vehicle-detail__meta vehicle-detail__door-count">
+			Doors: {{vehicle.doorCount}}
+		</span>
+	</div>
+
+</div>

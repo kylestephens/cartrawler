@@ -28,7 +28,6 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['<%= config.app %>/scripts/{,*/}*.js', '<%= config.app %>/modules/{,*/}*.js'],
-                //tasks: ['newer:jshint:all', 'newer:jscs:all'],
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 }
@@ -357,8 +356,6 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('default', [
-        //'newer:jshint',
-        'newer:jscs',
         'build'
     ]);
 };

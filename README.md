@@ -1,4 +1,4 @@
-# CarTrawler
+# CarTrawler Code Challenge
 
 ## Notes
 
